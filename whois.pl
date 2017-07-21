@@ -22,7 +22,8 @@ sub process_request {
 
 Whois->run(
 	user			=> "nobody",
-	group			=> "nobody",
+	#group			=> "nobody",	# FreeBSD?
+	group			=> "nogroup",	# Debian9
 	port			=> 43,
 	ipv			=> '*',
 	pid_file		=> "/var/tmp/whois.pl.pid",
