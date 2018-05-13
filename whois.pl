@@ -13,11 +13,7 @@ use Net::CIDR;
 sub process_request {
 	(my $request = <>) =~ s/[.]([^.]+)\x{0d}\x{0a}/.$1/;
 
-	if ($1) {
-		print whois($request);
-	} else {
-		print whois($request, 'whois.radb.net');
-	}
+	print whois($request);
 }
 
 Whois->run(
@@ -27,8 +23,8 @@ Whois->run(
 	port			=> 43,
 	ipv			=> '*',
 	pid_file		=> "/var/tmp/whois.pl.pid",
-	background		=> 1,
-	setsid			=> 1,
+	background		=> 0,
+	setsid			=> 0,
 	#reverse_lookups	=> 1,
 	#allow			=> "domain\.tld",
 	#cidr_allow		=> '192.168.1.0/24',
